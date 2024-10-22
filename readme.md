@@ -210,7 +210,3 @@ A extensão é composta pelos seguintes arquivos:
 ## **Observações Finais**
 
 Esta extensão foi desenvolvida para fins educacionais e demonstra como extensões de navegador podem detectar potenciais violações de privacidade e ameaças à segurança. Os usuários devem estar cientes das implicações de privacidade ao navegar na web e tomar medidas adequadas para proteger seus dados.
-
-## **Licença**
-
-[Licença MIT](LICENSE)
