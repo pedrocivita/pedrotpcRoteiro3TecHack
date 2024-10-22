@@ -1,0 +1,33 @@
+{
+    "manifest_version": 2,
+    "name": "TecHack Privacy Extension",
+    "version": "1.5",
+    "description": "Detecta violações de privacidade em navegadores.",
+    "permissions": [
+      "webRequest",
+      "webRequestBlocking",
+      "webRequest",
+      "cookies",
+      "storage",
+      "tabs",
+      "<all_urls>",
+      "webNavigation"
+    ],
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content_script.js"],
+        "run_at": "document_idle"
+      }
+    ],
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "48": "icons/extension-icon.png"
+      }
+    }
+  }  

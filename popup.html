@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>TecHack Privacy Report</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <button id="refreshButton">Reiniciar e Verificar Novamente</button>
+  <h1>TecHack Privacy Report</h1>
+
+  <section>
+    <h2><img src="icons/privacy-score.png" alt="">Pontuação de Privacidade</h2>
+    <div class="score" id="privacyScore">Carregando...</div>
+    <canvas id="privacyChart" width="300" height="50"></canvas>
+    <p class="small-text">Baseada nas configurações de privacidade da página atual.</p>
+    <a href="#" id="methodologyLink">Ver metodologia</a>
+    <!-- Seção da metodologia -->
+    <div id="methodologyContent" class="methodology hidden">
+      <h3>Metodologia de Pontuação</h3>
+      <p>A pontuação de privacidade é calculada com base nos seguintes critérios:</p>
+      <ul>
+        <li>Cookies de terceira parte: -1 ponto por cookie (máximo de -30 pontos)</li>
+        <li>Conexões de terceiros: -2 pontos por conexão (máximo de -20 pontos)</li>
+        <li>Armazenamento local e outros: -10 pontos se detectado</li>
+        <li>Fingerprinting (Canvas, WebGL, Audio): -20 pontos por técnica detectada</li>
+        <li>Tentativas de Hijacking: -20 pontos se detectadas</li>
+        <li>Supercookies (ETag): -10 pontos se detectados</li>
+        <li>Sincronização de Cookies: -15 pontos se detectada</li>
+      </ul>
+      <p>A pontuação máxima é 100 e a mínima é 0.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><img src="icons/connection.png" alt="">Conexões e Cookies</h2>
+    <p id="thirdPartyDomains">Conexões de terceiros: Carregando...</p>
+    <ul id="thirdPartyDomainList"></ul>
+    <p id="firstPartyCookies">Cookies de primeira parte: Carregando...</p>
+    <p id="thirdPartyCookies">Cookies de terceira parte: Carregando...</p>
+    <p id="superCookies">Supercookies detectados: Carregando...</p>
+    <ul id="superCookieList"></ul>
+  </section>
+
+  <section>
+    <h2><img src="icons/storage.png" alt="">Armazenamento e Segurança</h2>
+    <p id="localStorage">Armazenamento local: Carregando...</p>
+    <p id="sessionStorage">Session Storage: Carregando...</p>
+    <p id="indexedDB">IndexedDB: Carregando...</p>
+    <p id="webSQL">Web SQL: Carregando...</p>
+    <p id="canvasFingerprinting">Canvas Fingerprinting: Carregando...</p>
+    <p id="webGLFingerprinting">WebGL Fingerprinting: Carregando...</p>
+    <p id="audioFingerprinting">AudioContext Fingerprinting: Carregando...</p>
+    <p id="hijackingDetected">Tentativas de Hijacking: Carregando...</p>
+  </section>
+
+  <!-- Seção para exibir os cookies -->
+  <section>
+    <h2><img src="icons/cookies.png" alt="">Detalhes dos Cookies</h2>
+    <h3>Cookies de primeira parte:</h3>
+    <ul id="firstPartyCookieNames"></ul>
+    <h3>Cookies de terceira parte:</h3>
+    <ul id="thirdPartyCookieNames"></ul>
+  </section>
+
+  <!-- Seção para exibir os domínios de terceiros -->
+  <section>
+    <h2><img src="icons/third-party.png" alt="">Domínios de Terceiros</h2>
+    <ul id="thirdPartyDomainsList"></ul>
+  </section>
+
+  <!-- Seção para exibir o armazenamento -->
+  <section>
+    <h2><img src="icons/local-storage.png" alt="">Detalhes do Armazenamento</h2>
+    <h3>Local Storage:</h3>
+    <ul id="localStorageEntries"></ul>
+    <h3>Session Storage:</h3>
+    <ul id="sessionStorageEntries"></ul>
+    <h3>IndexedDB:</h3>
+    <ul id="indexedDBEntries"></ul>
+    <h3>Web SQL:</h3>
+    <p id="webSQLStatus">Carregando...</p>
+  </section>
+
+  <!-- Seção para exibir a sincronização de cookies -->
+  <section>
+    <h2><img src="icons/cookie-sync.png" alt="">Sincronização de Cookies</h2>
+    <p id="cookieSync">Carregando...</p>
+    <ul id="cookieSyncDomains"></ul>
+  </section>
+
+  <script src="popup.js"></script>
+</body>
+</html>
