@@ -1,212 +1,226 @@
 
-# **Tecnologias Hacker - Roteiro 3 - Privacy Extension**
+# TecHack Privacy Extension
 
-## Por Pedro Civita
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![WebExtensions](https://img.shields.io/badge/WebExtensions-FF6611?style=flat&logo=firefox&logoColor=white)](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
+[![Chrome](https://img.shields.io/badge/Chrome-4285F4?style=flat&logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/)
+[![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=flat&logo=firefox&logoColor=white)](https://addons.mozilla.org/)
+
+A comprehensive browser extension designed to detect and report privacy violations during web browsing. This tool provides real-time insights into tracking techniques, data collection practices, and potential security threats on websites.
+
+## About
+
+This project was developed as part of the **Hacker Technologies** course (Roteiro 3) at **Insper - Institute of Education and Research**, São Paulo, Brazil, for the Computer Engineering program. The extension demonstrates practical applications of web security concepts and privacy-preserving technologies.
+
+## Features
+
+### Privacy Detection Capabilities
+
+**Third-Party Domain Connections**
+- Real-time detection of external domains contacted during page load
+- Comprehensive tracking of third-party resources and services
+- Detailed domain listing in the extension popup
+
+**Browser Hijacking Detection**
+- Monitors suspicious script injections and DOM modifications
+- Identifies potential malicious code execution attempts
+- Alerts users to security threats in real-time
+
+**HTML5 Storage Analysis**
+- Detects usage of multiple storage mechanisms:
+  - `localStorage`
+  - `sessionStorage`
+  - `IndexedDB`
+  - `Web SQL Database`
+- Displays stored data entries for user inspection
+
+**Cookie & Supercookie Analysis**
+- Differentiates between first-party and third-party cookies
+- Identifies session vs. persistent cookies
+- Detects ETag-based supercookies for persistent tracking
+- Comprehensive cookie enumeration and classification
+
+**Fingerprinting Detection**
+- Canvas Fingerprinting monitoring
+- WebGL Fingerprinting detection
+- AudioContext API tracking
+- Alerts users when fingerprinting techniques are employed
+
+**Cookie Synchronization Detection**
+- Identifies cross-domain cookie value synchronization
+- Detects potential cross-site tracking mechanisms
+- Monitors cookie sharing between first and third-party domains
+
+**Privacy Score Calculation**
+- Quantitative privacy rating (0-100) for each website
+- Visual representation of privacy metrics
+- Transparent scoring methodology with detailed explanations
+
+## Installation
+
+### Firefox
+
+1. Clone or download this repository:
+   ```bash
+   git clone https://github.com/pedrocivita/pedrotpcRoteiro3TecHack.git
+   ```
+
+2. Open Firefox and navigate to:
+   ```
+   about:debugging#/runtime/this-firefox
+   ```
+
+3. Click **"Load Temporary Add-on"**
+
+4. Select the `manifest.json` file from the extension directory
+
+### Chrome/Chromium
+
+1. Clone or download this repository
+
+2. Open Chrome and navigate to:
+   ```
+   chrome://extensions/
+   ```
+
+3. Enable **"Developer mode"** (toggle in top-right corner)
+
+4. Click **"Load unpacked"**
+
+5. Select the extension directory
+
+## Usage
+
+1. **Navigate to any website** you want to analyze
+
+2. **Click the extension icon** in your browser toolbar
+
+3. **View the Privacy Report** displaying:
+   - Overall Privacy Score
+   - Third-party domain connections
+   - Cookie details and classifications
+   - Storage mechanism usage
+   - Fingerprinting technique detection
+   - Browser hijacking attempts
+   - Cookie synchronization activity
+
+4. **Refresh analysis** by clicking "Reiniciar e Verificar Novamente"
+
+5. **View methodology** details by clicking "Ver metodologia"
+
+## Privacy Score Methodology
+
+The privacy score is calculated using the following penalty system (starting from 100 points):
+
+| Detection Type | Penalty | Maximum Penalty |
+|----------------|---------|-----------------|
+| Third-party cookies | -1 per cookie | -30 points |
+| Third-party connections | -2 per domain | -20 points |
+| localStorage usage | -10 points | -10 points |
+| sessionStorage usage | -10 points | -10 points |
+| IndexedDB usage | -10 points | -10 points |
+| Web SQL usage | -10 points | -10 points |
+| Canvas Fingerprinting | -20 points | -20 points |
+| WebGL Fingerprinting | -20 points | -20 points |
+| AudioContext Fingerprinting | -20 points | -20 points |
+| Browser Hijacking detected | -20 points | -20 points |
+| Supercookies (ETag) | -10 points | -10 points |
+| Cookie Synchronization | -15 points | -15 points |
+
+**Score Range:** 0-100 (higher scores indicate better privacy practices)
+
+## Technical Architecture
+
+### Project Structure
+
+```
+.
+├── manifest.json          # Extension configuration and permissions
+├── background.js          # Background script for cookie/network monitoring
+├── content_script.js      # Injected script for page-level detection
+├── popup.html            # Extension popup UI structure
+├── popup.js              # Popup logic and privacy score calculation
+├── popup.css             # Popup styling
+└── icons/                # Extension icons and UI assets
+```
+
+### Core Components
+
+**background.js**
+- Cookie detection and classification
+- Network request monitoring for third-party connections
+- Supercookie (ETag) detection
+- Cookie synchronization analysis
+- Message passing with content scripts
+
+**content_script.js**
+- HTML5 storage mechanism detection
+- Fingerprinting API monitoring (Canvas, WebGL, AudioContext)
+- DOM mutation observation for hijacking detection
+- Real-time privacy threat alerts
+
+**popup.js**
+- Privacy score calculation engine
+- UI state management
+- Data aggregation from background and content scripts
+- User interaction handling
+
+## Technologies Used
+
+- **JavaScript** - Core programming language
+- **HTML5** - Popup interface structure
+- **CSS3** - Styling and visual presentation
+- **WebExtensions API** - Cross-browser extension framework
+- **Chrome Extensions API** - Chrome-specific functionality
+- **Firefox Add-ons API** - Firefox-specific functionality
+
+## Academic Context
+
+**Course:** Hacker Technologies (Tecnologias Hacker)  
+**Assignment:** Roteiro 3 - Privacy Extension  
+**Institution:** Insper - Institute of Education and Research  
+**Program:** Computer Engineering (Engenharia de Computação)  
+**Location:** São Paulo, Brazil
+
+### Assignment Requirements Met
+
+This extension fulfills all requirements specified in Roteiro 3:
+
+- Third-party domain connections (2.5 points)
+- Browser hijacking threat detection (1 point)
+- HTML5 storage detection (2.5 points)
+- Cookie and supercookie counting (1 point)
+- Canvas fingerprinting detection (1 point)
+- Cookie synchronization detection (implemented)
+- Privacy score calculation (2 points)
+
+## References
+
+### Technical Documentation
+- [Mozilla WebExtensions API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
+- [Chrome Extensions Documentation](https://developer.chrome.com/docs/extensions/)
+- [Web Privacy Measurement](https://webtransparency.cs.princeton.edu/)
+
+### Research & Resources
+- [Fingerprinting Techniques](https://fingerprintable.org)
+- [Mozilla Privacy Blog](https://blog.mozilla.org/privacy/)
+- [Electronic Frontier Foundation - Privacy Badger](https://privacybadger.org/)
+- [StoragErazor Extension](https://github.com/Miraculix200/StoragErazor)
+
+## Contact
+
+**Pedro Civita**
+
+- Email: pedrocivita@gmail.com
+- LinkedIn: [linkedin.com/in/pedrocivita](https://www.linkedin.com/in/pedrocivita/)
+- GitHub: [@pedrocivita](https://github.com/pedrocivita)
+
+## License
+
+This project was developed for educational purposes as part of academic coursework at Insper. Feel free to use and modify the code for learning and non-commercial purposes.
 
 ---
 
-## **Visão Geral**
-
-A **TecHack Privacy Extension** é uma extensão para navegadores desenvolvida para detectar e apresentar potenciais violações de privacidade durante a navegação web. Ela fornece aos usuários insights sobre como os sites podem estar comprometendo sua privacidade, detectando várias técnicas de rastreamento e ameaças à segurança.
-
-## **Funcionalidades**
-
-- **Conexões a Domínios de Terceiros**
-
-  - Detecta e lista todos os domínios de terceiros conectados durante a navegação.
-  - Ajuda os usuários a entender quais serviços externos ou rastreadores estão presentes em uma página.
-
-- **Detecção de Ameaças de Sequestro de Navegador (Hijacking e Hook)**
-
-  - Monitora tentativas de injeção de scripts maliciosos e modificações suspeitas no DOM.
-  - Alerta o usuário se alguma ameaça for detectada.
-
-- **Detecção de Armazenamento de Dados (Storage Local - HTML5)**
-
-  - Identifica o uso de vários mecanismos de armazenamento HTML5:
-    - `localStorage`
-    - `sessionStorage`
-    - `IndexedDB`
-    - `Web SQL`
-  - Exibe os dados armazenados para o usuário.
-
-- **Análise de Cookies e Supercookies**
-
-  - Detecta o número de cookies e supercookies injetados durante o carregamento da página.
-  - Diferencia entre cookies de primeira e terceira parte.
-  - Identifica se os cookies são de sessão ou persistentes.
-  - Detecta supercookies, como ETags, utilizados para rastreamento persistente.
-
-- **Detecção de Fingerprinting (Canvas, WebGL e AudioContext)**
-
-  - Monitora o uso de APIs conhecidas por serem utilizadas em técnicas de fingerprinting.
-  - Alerta o usuário se essas técnicas forem detectadas.
-
-- **Detecção de Sincronização de Cookies**
-
-  - Identifica quando valores de cookies são sincronizados entre domínios de primeira e terceira parte.
-  - Alerta o usuário sobre potenciais rastreamentos cross-site por meio da sincronização de cookies.
-
-- **Cálculo de Pontuação de Privacidade**
-
-  - Calcula uma pontuação de privacidade para cada página com base em uma metodologia clara.
-  - Fornece uma representação visual da pontuação e explicações detalhadas.
-
-## **Instalação**
-
-1. **Baixe os Arquivos da Extensão**
-
-   - Clone ou baixe os arquivos da extensão deste repositório.
-
-2. **Carregue a Extensão no Firefox**
-
-   - Abra o Firefox e navegue até `about:debugging#/runtime/this-firefox`.
-   - Clique em **"Carregar Manifesto Temporário"**.
-   - Selecione o arquivo `manifest.json` da pasta da extensão.
-
-3. **Carregue a Extensão no Chrome (Opcional)**
-
-   - Abra o Chrome e navegue até `chrome://extensions/`.
-   - Ative o **"Modo do desenvolvedor"**.
-   - Clique em **"Carregar sem compactação"**.
-   - Selecione a pasta da extensão.
-
-## **Uso**
-
-1. **Navegue para Qualquer Site**
-
-   - Acesse qualquer site que deseja analisar.
-
-2. **Abra o Popup da Extensão**
-
-   - Clique no ícone da extensão na barra de ferramentas do navegador para abrir o popup.
-
-3. **Visualize o Relatório de Privacidade**
-
-   - O popup exibe um relatório completo de privacidade, incluindo:
-     - Pontuação de Privacidade
-     - Conexões a domínios de terceiros
-     - Detalhes de cookies e supercookies
-     - Mecanismos de armazenamento utilizados
-     - Detecção de técnicas de fingerprinting
-     - Tentativas de sequestro de navegador
-     - Detecção de sincronização de cookies
-
-4. **Atualize a Análise**
-
-   - Clique em **"Reiniciar e Verificar Novamente"** para atualizar os dados e reanalisar a página atual.
-
-5. **Visualize a Metodologia**
-
-   - Clique em **"Ver metodologia"** para entender como a pontuação de privacidade é calculada.
-
-## **Metodologia de Pontuação**
-
-A pontuação de privacidade é calculada com base nos seguintes critérios:
-
-- **Cookies de Terceira Parte:** -1 ponto por cookie (máximo de -30 pontos)
-- **Conexões de Terceiros:** -2 pontos por conexão (máximo de -20 pontos)
-- **Uso de Mecanismos de Armazenamento HTML5:** -10 pontos para cada mecanismo detectado (`localStorage`, `sessionStorage`, `IndexedDB`, `Web SQL`)
-- **Técnicas de Fingerprinting:**
-  - Canvas Fingerprinting: -20 pontos
-  - WebGL Fingerprinting: -20 pontos
-  - AudioContext Fingerprinting: -20 pontos
-- **Tentativas de Sequestro de Navegador:** -20 pontos se detectadas
-- **Supercookies (ETag):** -10 pontos se detectados
-- **Sincronização de Cookies:** -15 pontos se detectada
-
-A pontuação máxima é 100, e a mínima é 0. Uma pontuação mais alta indica melhores práticas de privacidade por parte do site.
-
-## **Atendimento aos Requisitos do Roteiro 3**
-
-Esta extensão atende aos requisitos especificados no "Roteiro 3" da seguinte forma:
-
-- **Conexões a Domínios de Terceira Parte (2,5 pontos)**
-
-  - Detecta e lista todos os domínios de terceiros conectados durante a navegação.
-  - Fornece detalhes ao usuário no popup.
-
-- **Potenciais Ameaças de Sequestro de Navegador (1 ponto)**
-
-  - Monitora e alerta o usuário sobre qualquer injeção suspeita de scripts ou modificações que possam indicar tentativas de sequestro.
-
-- **Detecção de Armazenamento de Dados (2,5 pontos)**
-
-  - Detecta o uso de `localStorage`, `sessionStorage`, `IndexedDB` e `Web SQL`.
-  - Exibe os dados armazenados para o usuário.
-
-- **Quantidade de Cookies e Supercookies (1 ponto)**
-
-  - Detecta o número de cookies e supercookies.
-  - Diferencia entre cookies de primeira e terceira parte.
-  - Identifica cookies de sessão e persistentes.
-
-- **Detecção de Canvas Fingerprinting (1 ponto)**
-
-  - Monitora e alerta o usuário se técnicas de Canvas fingerprinting forem utilizadas.
-  - Também detecta fingerprinting via WebGL e AudioContext.
-
-- **Detecção de Sincronização de Cookies (Implementado)**
-
-  - Identifica quando valores de cookies são sincronizados entre domínios de primeira e terceira parte.
-  - Alerta o usuário sobre potenciais rastreamentos cross-site.
-
-- **Cálculo de Pontuação de Privacidade (2 pontos)**
-
-  - Calcula uma pontuação de privacidade com base em uma metodologia clara.
-  - Fornece explicações detalhadas ao usuário.
-
-## **Estrutura do Código**
-
-A extensão é composta pelos seguintes arquivos:
-
-- **manifest.json**: Define as permissões da extensão, scripts de background, content scripts e a ação do navegador.
-
-- **background.js**: Contém scripts de background que:
-
-  - Detectam cookies e supercookies.
-  - Monitoram requisições de rede para conexões de terceiros.
-  - Detectam sincronização de cookies.
-  - Recebem mensagens dos content scripts.
-
-- **content_script.js**: Injetado nas páginas web para:
-
-  - Detectar o uso de mecanismos de armazenamento HTML5.
-  - Monitorar técnicas de fingerprinting.
-  - Detectar potenciais tentativas de sequestro.
-
-- **popup.html**: Define a estrutura do popup exibido ao usuário.
-
-- **popup.js**: Lida com a lógica do popup, incluindo:
-
-  - Cálculo da pontuação de privacidade.
-  - Atualização da interface com os dados detectados.
-  - Gerenciamento de interações do usuário.
-
-- **popup.css**: Contém os estilos da interface do popup.
-
-- **icons/**: Diretório contendo os ícones utilizados na extensão.
-
-## **Referências**
-
-- Mozilla Developer Network:
-
-  - [Sua primeira extensão](https://developer.mozilla.org/pt-BR/docs/Mozilla/Add-ons/WebExtensions/sua_primeira_WebExtension)
-
-  - [Exemplos de WebExtensions](https://developer.mozilla.org/pt-BR/Add-ons/WebExtensions/Examples)
-
-- IBM Developer Works:
-
-  - [Extendendo o Chrome com ações de navegador e popups](https://www.ibm.com/developerworks/br/library/os-extendchrome/index.html)
-
-- Repositórios no GitHub:
-
-  - [StoragErazor](https://github.com/Miraculix200/StoragErazor)
-
-- Recursos Adicionais:
-
-  - [Fingerprinting Techniques](https://fingerprintable.org)
-
-## **Observações Finais**
-
-Esta extensão foi desenvolvida para fins educacionais e demonstra como extensões de navegador podem detectar potenciais violações de privacidade e ameaças à segurança. Os usuários devem estar cientes das implicações de privacidade ao navegar na web e tomar medidas adequadas para proteger seus dados.
+**Note:** This extension is designed for educational and research purposes to demonstrate privacy detection techniques. Users should be aware of privacy implications when browsing the web and take appropriate measures to protect their data.
