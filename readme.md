@@ -181,7 +181,7 @@ The privacy score is calculated using the following penalty system (starting fro
 **Course:** Hacker Technologies (Tecnologias Hacker)  
 **Assignment:** Roteiro 3 - Privacy Extension  
 **Institution:** Insper - Institute of Education and Research  
-**Program:** Computer Engineering (Engenharia de Computação)  
+**Program:** Computer Engineering  
 **Location:** São Paulo, Brazil
 
 ### Assignment Requirements Met
