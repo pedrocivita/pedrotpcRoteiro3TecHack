@@ -201,7 +201,7 @@ This extension fulfills all requirements specified in Roteiro 3:
 ### Technical Documentation
 - [Mozilla WebExtensions API](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions)
 - [Chrome Extensions Documentation](https://developer.chrome.com/docs/extensions/)
-- [Web Privacy Measurement](https://webtransparency.cs.princeton.edu/)
+- [EFF's Cover Your Tracks](https://coveryourtracks.eff.org/)
 
 ### Research & Resources
 - [Fingerprinting Techniques](https://fingerprintable.org)
