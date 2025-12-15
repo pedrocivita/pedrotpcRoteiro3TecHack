@@ -106,9 +106,9 @@ This project was developed as part of the **Hacker Technologies** course (Roteir
    - Browser hijacking attempts
    - Cookie synchronization activity
 
-4. **Refresh analysis** by clicking "Reiniciar e Verificar Novamente"
+4. **Refresh analysis** by clicking the "Restart and Check Again" button
 
-5. **View methodology** details by clicking "Ver metodologia"
+5. **View methodology** details by clicking "View methodology"
 
 ## Privacy Score Methodology
 
