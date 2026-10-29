@@ -1,0 +1,10 @@
+# OS and editor
+.DS_Store
+.vscode/
+.idea/
+
+# Packaged extension builds
+*.zip
+*.crx
+*.pem
+node_modules/
